@@ -1,9 +1,0 @@
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32L476xx -I../vendor/cmsis_core -I../vendor/cmsis_device_l4 -Iinc -std=c11 -ffreestanding -fno-common -ffunction-sections -fdata-sections -Og -g3 -Wall -Wextra -c ../startup/startup_stm32l476xx.s -o build/startup/startup_stm32l476xx.o
-
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32L476xx -I../vendor/cmsis_core -I../vendor/cmsis_device_l4 -Iinc -std=c11 -ffreestanding -fno-common -ffunction-sections -fdata-sections -Og -g3 -Wall -Wextra -c ../startup/system_stm32l4xx.c -o build/startup/system_stm32l4xx.o
-
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -DSTM32L476xx -I../vendor/cmsis_core -I../vendor/cmsis_device_l4 -Iinc -std=c11 -ffreestanding -fno-common -ffunction-sections -fdata-sections -Og -g3 -Wall -Wextra -c src/main.c -o build/local/main.o
-
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -T../ld/STM32L476RGTX_FLASH.ld --specs=nano.specs --specs=nosys.specs -Wl,--gc-sections -Wl,-Map=build/blinky.map -Wl,--print-memory-usage build/startup/startup_stm32l476xx.o build/startup/system_stm32l4xx.o build/local/main.o -o build/blinky.elf
-
-arm-none-eabi-objcopy -O binary build/blinky.elf build/blinky.bin
