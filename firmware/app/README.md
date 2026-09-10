@@ -1,4 +1,4 @@
-# stm32-bare-metal-blinky
+# stm32-bare-metal-blinky app code for OTA system
 
 A bare-metal blinky for the STM32L476RG Nucleo. Built with no CubeMX, no HAL, and no IDE. This is the toolchain foundation for the A/B bootloader that will be written in this repo.
 
