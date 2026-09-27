@@ -4,10 +4,6 @@
  * @author: Marco Chen
  */
 
-/*
- * Only need FLASH and SRAM1 for a blinky
- *
- */
 ENTRY(Reset_Handler)
 
 /* Start the stack from the top of SRAM1 (stack grows down) */

@@ -1,3 +1,8 @@
+
+// STM32CubeIDE generated linker script that I am only using for reference!!!
+// See Makefile to find out which linker script I'm actually using, because I 
+// want to write the linker script myself.
+
 /*
 ******************************************************************************
 **
