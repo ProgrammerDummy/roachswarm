@@ -1,6 +1,6 @@
 /* 
- * stm32l476rg_flash.ld
- * Custom linker script for NUCLEO-L476RG board
+ * minimal_linker.ld
+ * Custom linker script for STM32l476RG
  * @author: Marco Chen
  */
 
@@ -51,6 +51,8 @@ SECTIONS
         .= ALIGN(4)
     } >FLASH
 
+    /* save LMA into _sidata (start of initialized data)*/
+    _sidata = LOADADDR(.data);
     /* Make SRAM1 the VMA and FLASH the LMA. */
     .data : {
         . = ALIGN(4);
