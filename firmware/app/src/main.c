@@ -5,7 +5,7 @@
 
 void delay() {
     volatile uint64_t num;
-    for (num = 0; num < 500000; num++) {
+    for (num = 0; num < 50000; num++) {
         ;
     }
 }
