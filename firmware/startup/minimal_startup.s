@@ -1,6 +1,6 @@
 /* 
  * minimal_startup.s
- * Custom startup code for STM32l476RG
+ * Custom startup code for STM32L476RG
  * @author: Marco Chen
  */
 
@@ -8,26 +8,26 @@
 .cpu cortex-m4
 .thumb
 
-
 /* Create a minimal vector table that the linker will dump throw into flash*/
-.section .isr_vector "a"
-.type g_pfnVectors %object
+.section .isr_vector,"a"
+.type g_pfnVectors, %object
 
 g_pfnVectors:
     .word _estack
     .word Reset_Handler
+.size g_pfnVectors, .-g_pfnVectors
 
 .section .text
 .type Reset_Handler, %function
 .global Reset_Handler
 
 Reset_Handler:
-    ldr sp, _estack
+    ldr sp, = _estack
 
     /* copy .data from FLASH to SRAM */
-    ldr r0, _sdata
-    ldr r1, _edata
-    ldr r2, _sidata
+    ldr r0, = _sdata
+    ldr r1, = _edata
+    ldr r2, = _sidata
     movs r3, #0
     b LoopCopyDataInit
 
@@ -42,21 +42,23 @@ Reset_Handler:
         bcc CopyDataInit /* Loop again if (_sdata + offset) < _edata */
 
     /* Zero out bss */
-    ldr r0, _sbss
-    ldr r1, _ebss
+    ldr r2, = _sbss
+    ldr r4, = _ebss
     movs r3, #0
     b LoopFillZeroBss
 
     FillZeroBss:
-        str r3, [r2]
+        str r3, [r0]
         adds r2, r2, #4
 
     LoopFillZeroBss:
-        cmp r0, r1
-        bcc Fill Zero Bss/* Loop again if (_sbss + offset) < _ebss */
+        cmp r2, r4
+        bcc FillZeroBss /* Loop again if (_sbss + offset) < _ebss */
 
     bl main
 
 LoopForever:
     b LoopForever
+
+.size Reset_Handler, .-Reset_Handler
 
