@@ -45,10 +45,10 @@ SECTIONS
     /* Dump the constants into flash too*/
     .rodata : 
     {
-        .= ALIGN(4)
+        . = ALIGN(4);
         *(.rodata)
         *(.rodata*)
-        .= ALIGN(4)
+        . = ALIGN(4);
     } >FLASH
 
     /* save LMA into _sidata (start of initialized data)*/
@@ -59,7 +59,7 @@ SECTIONS
         _sdata = .; /* create a global variable at data start */
         *(.data)
         *(.data*)
-        . = ALIGN(4)
+        . = ALIGN(4);
         _edata = .; /* create a global variable at data end */
     } >SRAM1 AT >FLASH
 
@@ -68,11 +68,10 @@ SECTIONS
         _sbss = .;
         . = ALIGN(4);
         *(.bss)
-        *(*.bss)
+        *(.bss*)
         . = ALIGN(4);
-        ._ebss = .;
+        _ebss = .;
     } >SRAM1
 
-    . = ALIGN(4)
-
+    . = ALIGN(4);
 }
