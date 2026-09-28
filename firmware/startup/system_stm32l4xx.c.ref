@@ -1,3 +1,6 @@
+/* STM32CubeIDE generated c startup code that I am only using for reference!!!
+   The startup code used in the makefile is minimal_startup.s. */
+   
 /**
   ******************************************************************************
   * @file    system_stm32l4xx.c

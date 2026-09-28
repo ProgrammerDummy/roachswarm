@@ -1,3 +1,7 @@
+
+/* STM32CubeIDE generated linker script that I am only using for reference!!!
+   The linker used in the makefile is minimal_linker.ld */
+
 /*
 ******************************************************************************
 **
