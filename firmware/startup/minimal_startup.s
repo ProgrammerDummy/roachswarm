@@ -48,7 +48,7 @@ Reset_Handler:
     b LoopFillZeroBss
 
     FillZeroBss:
-        str r3, [r0]
+        str r3, [r2]
         adds r2, r2, #4
 
     LoopFillZeroBss:
